@@ -1,7 +1,3 @@
-# it works should be
-# build the docker images
-# push docker images to docker hub
-# ssh into VM and start new images
 name : Deployment of Turbo App with Docker and CI-CD
 on:
   push:
