@@ -1,7 +1,7 @@
 name : Deployment of Turbo App with Docker and CI-CD
 on:
   push:
-     branches: ["main"]
+     branches: [ main ]
 
 jobs :
   build:
