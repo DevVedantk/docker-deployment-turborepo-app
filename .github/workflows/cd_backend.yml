@@ -1,25 +1,24 @@
-name : Deployment of Turbo App with Docker and CI-CD
+name: Deploy the backend
 on:
   push:
-     branches: [ main ]
-
-jobs :
+    branches: [ main ]
+jobs: 
   build:
-     runs-on: ubuntu-latest
-     steps:
-      - name: checkout the code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
         uses: actions/checkout@v2
 
-      - name: Docker logIn
+      - name: Docker login
         uses: docker/login-action@v2
         with:
-          username: ${{secrets.DOCKERHUB_USERNAME}}     
-          password: ${{secrets.DOCKERHUB_PASSWORD}}     
-        
-      - name: Build and push
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      
+      - name: Build and push 
         uses: docker/build-push-action@v4
-        with :
+        with:
           context: .
           file: ./docker/dockerfile.backend
-          push : true
-          tags: vedantkhasbage/todo-app-backend2: ${{github.sha}}
+          push: true
+          tags: vedantkhasbage/todo-app-backend:${{ github.sha }} 
